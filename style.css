@@ -1,0 +1,39 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px ghostwhite;
+    background-color: ghostwhite;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    width: 10%;
+}
+.panier {
+    border: solid 1px red;
+    background-color: red;
+    width: 5rem;
+    border-radius: 5rem;
+    font-size: larger;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+.teddy-img {
+    width: 60%;
+    object-fit: cover;
+}
+.teddy-case {
+    display: block;
+    border: solid 1px red;
+    background-color: ghostwhite;
+    border-radius: 3rem;
+    text-align: center;
+    width: 20rem;
+    margin: 2rem;
+}
