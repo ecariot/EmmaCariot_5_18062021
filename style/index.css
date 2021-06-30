@@ -1,0 +1,79 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px ghostwhite;
+    background-color: ghostwhite;
+}
+
+.logo {
+    width: 10%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+p {
+    color: black;
+}
+.panier {
+    display: flex;
+    border: solid 1px red;
+    width: 5rem;
+    border-radius: 5rem;
+    font-size: larger;
+    text-align: center;
+}
+
+i {
+    color: black;
+    margin-top: 1.2rem;
+}
+
+.products {
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2rem 2rem 0 0;
+}
+
+.product {
+    border: 1px solid red;
+    border-radius: 2rem;
+    width: 20rem;
+}
+
+.product-infos-title {
+    color: black;
+    text-align: center;
+}
+
+.product-infos-price {
+    color: black;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    text-align: center;
+    border: 1px solid ghostwhite;
+    background-color: ghostwhite;
+}
+footer {
+    border: 1px solid ghostwhite;
+    background-color: ghostwhite;
+    margin-top: 2rem;
+}
+.footer-item {
+    display: block;
+    color: black;
+    text-align: center;
+}
+
+
+
