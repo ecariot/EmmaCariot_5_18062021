@@ -6,7 +6,7 @@ header {
 }
 
 .logo {
-    width: 10%;
+    width: 20%;
     height: 100%;
     border-radius: 2rem;
 }
@@ -75,5 +75,13 @@ footer {
     text-align: center;
 }
 
+.container {
+    border: 1px solid red;
+    border-radius: 2rem;
+    width: 30rem;
+    text-align: center;
+}
 
-
+.product-case-infos {
+    margin: 1rem;
+}
