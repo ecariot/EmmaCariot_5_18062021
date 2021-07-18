@@ -5,6 +5,10 @@ header {
     background-color: ghostwhite;
 }
 
+body {
+    background-color: ghostwhite !important;
+}
+
 .logo {
     width: 20%;
     height: 100%;
@@ -13,19 +17,23 @@ header {
 
 p {
     color: black;
+    margin: 1rem;
+    margin-bottom: 0rem !important;
+    margin-top: 1rem !important;
 }
 .panier {
     display: flex;
-    border: solid 1px red;
-    width: 5rem;
+    width: 7rem;
+    height: 4rem;
     border-radius: 5rem;
     font-size: larger;
     text-align: center;
+    background-color: ghostwhite;
 }
 
 i {
     color: black;
-    margin-top: 1.2rem;
+    margin-top: 1.3rem;
 }
 
 .products {
@@ -40,7 +48,7 @@ img {
 }
 
 .product {
-    border: 1px solid red;
+    border: 0.5px solid #f2f2f2;
     border-radius: 2rem;
     width: 20rem;
 }
@@ -56,7 +64,7 @@ img {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .title {
@@ -76,14 +84,16 @@ footer {
 }
 
 .container {
-    border: 1px solid red;
+    border: 0.5rem solid #f2f2f2;
     border-radius: 2rem;
-    width: 30rem;
+    width: 22rem !important;
+    height: auto;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     display: block;
     margin-top: 1rem;
+    padding: 0 !important;
 }
 
 .product-case-infos {
@@ -92,4 +102,47 @@ footer {
 
 .error {
     display: none;
+}
+
+#quantity {
+    border-radius: 2rem;
+    border: solid 1px #f2f2f2;
+    width: 3rem;
+}
+
+select {
+    border-radius: 2rem;
+    border: solid 1px #f2f2f2;
+    width: 7rem;
+}
+
+.add-to-cart {
+    background-color: white;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*FORM*/
+
+.cart-global {
+    border: solid 1px #f2f2f2;
+    border-radius: 2rem;
+    background-color: white;
+    width: 30rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ .order {
+    font-size: larger;
+    color: black !important;
+}
+
+input {
+    border-radius: 3rem;
+    border: 1px solid rgba(180, 180, 189, 0.575);
 }
