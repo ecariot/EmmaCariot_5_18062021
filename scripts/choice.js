@@ -63,7 +63,6 @@ function getArticle() {
     })
 };
 
-
 function addToCart() {
   addBtn.addEventListener("click", () => {
     if (bearQuantity.value > 0) {
@@ -80,13 +79,14 @@ function addToLocalStorage(teddy) {
     products = JSON.parse(localStorage.getItem("products"));
   }
   for(let i = 0; i < products.length; i++){
-    if(id === products[i]._id){
+    if(id === products[i]){
       exist = true;
     }
   }
   if(exist === false){
     products.push(teddy);
-  } else 
+  } else {
+    bearQuantity++;
+  }
   localStorage.setItem("products", JSON.stringify(products));
-}
-
+};
