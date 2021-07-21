@@ -22,19 +22,25 @@
 </header>
 <!--HEADER-->  
 
-<main class="cart-global">
-  <div class="cart-container">
-    <h1 class="cart-title">Votre panier</h1>
-    <div class="cart-detail">
-      <div class="cart-detail-bear-name">Nom: </div>
-      <div class="cart-detail-quantity">Quantité: </div>
-      <div class="cart-detail-price">Prix €: </div>
-    </div>
-    <div class="Total-price">Total: </div>
-    <div class="empty-cart">
-      Vider le panier
-    </div>
-  </div>
+<main class="cart-main">
+  <div class="container">
+    <div class="cart-card">
+        <h2 class="cart">Votre panier</h2>
+        <div class="cart-global">
+            <div class="cart-detail">
+                <div class="cart-detail-title">Nom</div>
+                <div class="cart-detail-quantity">Quantité</div>
+                <div class="cart-detail-price">Prix </div>
+            </div>    
+                             
+            <div class="empty-cart">
+                <a href="cart.html">
+                    <div class="empty-button">
+                        Vider le panier
+                    </div>
+                </a>
+            </div>
+        </div>
 
   <div class="form">
     <h2>Formulaire de livraison</h2>
@@ -54,6 +60,7 @@
       <label for="city">Ville: <input type="text" name="city" id="city"></label>
      </div>
   </div>
+  <div class="cart-total">Total: </div>
   <a href="confirmation.html" class="order">Valider la commande</a>
 </main>
 

@@ -1,35 +1,55 @@
-let cart = document.querySelector(".cart-detail");
-let copyLocalStorage = JSON.parse(localStorage.getItem("products"));
+const cart = document.querySelector(".cart-global");
+const copyLocalStorage = JSON.parse(localStorage.getItem("products"));
 
-function main() {
-    displayCart();
-}
+
+  displayCart();
+  clearCart();
+
 
 function displayCart() {
-    let test = document.querySelector(".empty-cart");
-    for (let produit in copyLocalStorage) {
-        let productRow = document.createElement("div");
-        cart.insertBefore(productRow, test);
-        productRow.classList.add("cart-detail", "product-row");
+  let test = document.querySelector(".empty-cart");
 
-        let productName = document.createElement("div");
-        productRow.appendChild(productName);
-        productName.classList.add("cart-detail-bear-name");
-        productName.innerHTML = copyOfLS[produit].name;
+  //création de div pour les infos du panier
+  for (let produit of copyLocalStorage) {
+    let productRow = document.createElement("div");
+    cart.insertBefore(productRow, test);
+    productRow.classList.add("cart-detail");
 
-        let productQuantity = document.createElement("div");
-        productRow.appendChild(productQuantity);
-        productQuantity.classList.add("cart-detail-quantity");
-        productQuantity.innerHTML = copyOfLS[produit].quantity;
+    let productName = document.createElement("div");
+    productRow.appendChild(productName);
+    productName.classList.add("cart-detail-title");
+    productName.innerHTML = produit.name;
 
-        let productPrice = document.createElement("div");
-        productRow.appendChild(productPrice);
-        productPrice.classList.add("cart-detail-price");
+    let productQuantity = document.createElement("div");
+    productRow.appendChild(productQuantity);
+    productQuantity.classList.add("cart-detail-title", "cart-detail-quantity");
+    productQuantity.innerHTML = produit.quantity;
 
-    }
-
+    let productPrice = document.createElement("div");
+    productRow.appendChild(productPrice);
+    productPrice.classList.add("cart-detail-price");
+    productPrice.innerHTML = produit.price + "€";
+  }
 }
 
+function displayTotal() {
+    for(let n = 0; n <= produit.length; n++){
+        let totalPrice = document.createElement("div");
+        totalPrice.classList.add(".total");
+        totalPrice.innerHTML = n * produit;
+    }
+    
+}
+
+function clearCart() {
+    const buttonToEmptyCart = document.querySelector(".empty-button");
+    buttonToEmptyCart.addEventListener("click", () => {
+      localStorage.clear();
+    });
+  }
+
+
+//FORMULAIRE
 const submit = document.querySelector(".order");
 let inputName = document.querySelector("#name");
 let inputLastName = document.querySelector("#last-name");

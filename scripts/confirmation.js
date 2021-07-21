@@ -1,6 +1,1 @@
-displayId();
-
-function displayId() {
-    const orderId = document.querySelector(".order-id");
-    orderId.innerText = localStorage.getItem("orderId");
-}
+fetch(`http://localhost:3000/api/teddies/order`)

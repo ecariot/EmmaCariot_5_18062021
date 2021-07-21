@@ -131,7 +131,7 @@ select {
     border: solid 1px #f2f2f2;
     border-radius: 2rem;
     background-color: white;
-    width: 30rem;
+    width: auto;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -140,7 +140,7 @@ select {
 .cart-detail {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 }
 
  .order {
