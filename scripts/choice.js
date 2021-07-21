@@ -64,7 +64,8 @@ function getArticle() {
 };
 
 function addToCart() {
-  addBtn.addEventListener("click", () => {
+  addBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     if (bearQuantity.value > 0) {
       teddy.quantity = parseInt(bearQuantity.value);
       addToLocalStorage(teddy);    
@@ -75,18 +76,20 @@ function addToCart() {
 function addToLocalStorage(teddy) {
   let products = [];
   let exist = false;
+  let index = null;
   if (localStorage.getItem("products") !== null) {
     products = JSON.parse(localStorage.getItem("products"));
   }
   for(let i = 0; i < products.length; i++){
-    if(id === products[i]){
+    if(id === products[i]._id){
       exist = true;
+      index = i;
     }
   }
   if(exist === false){
     products.push(teddy);
   } else {
-    bearQuantity++;
+    products[index].quantity += parseInt(bearQuantity.value);
   }
   localStorage.setItem("products", JSON.stringify(products));
 };

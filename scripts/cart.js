@@ -1,16 +1,19 @@
 const cart = document.querySelector(".cart-global");
-const copyLocalStorage = JSON.parse(localStorage.getItem("products"));
+const products = JSON.parse(localStorage.getItem("products")) ?? [];
 
-
+document.addEventListener("DOMContentLoaded", () => {
   displayCart();
+  displayTotal();
   clearCart();
+})
+ 
 
 
 function displayCart() {
   let test = document.querySelector(".empty-cart");
 
   //création de div pour les infos du panier
-  for (let produit of copyLocalStorage) {
+  for (let produit of products) {
     let productRow = document.createElement("div");
     cart.insertBefore(productRow, test);
     productRow.classList.add("cart-detail");
@@ -28,17 +31,17 @@ function displayCart() {
     let productPrice = document.createElement("div");
     productRow.appendChild(productPrice);
     productPrice.classList.add("cart-detail-price");
-    productPrice.innerHTML = produit.price + "€";
+    productPrice.innerHTML = (produit.price * produit.quantity) + "€";
   }
 }
 
 function displayTotal() {
-    for(let n = 0; n <= produit.length; n++){
-        let totalPrice = document.createElement("div");
-        totalPrice.classList.add(".total");
-        totalPrice.innerHTML = n * produit;
+  let sum = 0;
+  console.log(products);
+    for(let n = 0; n < products.length; n++){
+        sum += products[n].quantity * products[n].price;
     }
-    
+    document.querySelector(".cart-total-value").innerHTML = sum + "€";
 }
 
 function clearCart() {
@@ -56,17 +59,3 @@ let inputLastName = document.querySelector("#last-name");
 let inputMail = document.querySelector("#email");
 let inputAdress = document.querySelector("#adress");
 let inputCity = document.querySelector("#city");
-
-displayAlert();
-
-function displayAlert() {
-    submit.addEventListener("click", () => {
-        if (!inputName.value ||
-            !inputLastName.value ||
-            !inputMail ||
-            !inputCity ||
-            !inputAdress) {
-            alert("Veuillez remplir tous les champs");
-        }
-    })
-}

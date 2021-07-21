@@ -42,26 +42,28 @@
             </div>
         </div>
 
-  <div class="form">
+  <form class="form">
     <h2>Formulaire de livraison</h2>
      <div class="name">
-      <label for="name">Prénom: <input type="text" name="name" id="name"></label>
+      <label for="name">Prénom: <input type="text" name="name" id="name" required="required"></label>
      </div>
      <div class="last-name">
-      <label for="last-name">Nom: <input type="text" name="last-name" id="last-name"></label>
+      <label for="last-name">Nom: <input type="text" name="last-name" id="last-name" required="required"></label>
      </div>
      <div class="email">
-      <label for="email">email: <input type="text" name="email" id="email"></label>
+      <label for="email">email: <input type="text" name="email" id="email" required="required"></label>
      </div>
      <div class="adress">
-      <label for="adress">Adresse: <input type="text" name="adress" id="adress"></label>
+      <label for="adress">Adresse: <input type="text" name="adress" id="adress" required="required"></label>
      </div>
      <div class="city">
-      <label for="city">Ville: <input type="text" name="city" id="city"></label>
+      <label for="city">Ville: <input type="text" name="city" id="city" required="required"></label>
      </div>
-  </div>
-  <div class="cart-total">Total: </div>
-  <a href="confirmation.html" class="order">Valider la commande</a>
+ 
+  <div class="cart-total">Total: <span class="cart-total-value"></span> </div>
+  <a href="confirmation.html" class="order">Valider</a>
+
+</form>
 </main>
 
 
