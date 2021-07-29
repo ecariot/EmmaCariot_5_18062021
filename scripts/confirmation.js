@@ -1,19 +1,8 @@
-fetch(`http://localhost:3000/api/teddies/order`)
+
+displayConfirmation();
 
 
-main();
-
-function main() {
-  displayOrderIdAndPrice();
-}
-
-function displayOrderIdAndPrice() {
-  const totalConfirmation = document.querySelector(".total span");
-  const orderId = document.querySelector(".orderid span");
-  
-  totalConfirmation.innerText = localStorage.getItem("total");
+function displayConfirmation() {
+  const orderId = document.querySelector(".display-order-id span");
   orderId.innerText = localStorage.getItem("orderId");
-
-  // On vide le localStorage pour recommencer plus tard le processus d'achat
-  localStorage.clear(); 
 }
