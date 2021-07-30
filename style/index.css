@@ -36,6 +36,42 @@ i {
     margin-top: 1.3rem;
 }
 
+/*-----PORDUITS------*/
+@media screen and (max-width: 1000px){
+ 
+    .logo {
+        width: 30% !important;
+    }
+    .products {
+        display: block !important;
+    }
+
+    .product {
+        width: auto !important;
+    }
+
+    .panier {
+        font-size: xxx-large !important;
+        margin-right: 5rem !important;
+    }
+
+    h1 {
+        font-size: xxx-large !important;
+    }
+
+    .product-infos {
+        font-size: xxx-large;
+    }
+
+    .footer-item {
+        font-size: xx-large;
+    }
+
+    .container {
+        width: max-content;
+    }
+}
+
 .products {
     display: flex;
     justify-content: space-between;

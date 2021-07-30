@@ -1,8 +1,13 @@
+main();
 
-displayConfirmation();
+function main() {
+  displayOrderIdAndPrice();
+}
 
-
-function displayConfirmation() {
-  const orderId = document.querySelector(".display-order-id span");
+function displayOrderIdAndPrice() {
+  const orderId = document.querySelector(".orderid span");
   orderId.innerText = localStorage.getItem("orderId");
+
+  //On vide le LS pour le prochain process d'achat
+  localStorage.clear(); 
 }
