@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function displayCart() {
+  let emptyCart = document.querySelector(".if-empty-cart");
   let test = document.querySelector(".empty-cart");
 
   //création de div pour les infos du panier
@@ -46,6 +47,9 @@ function displayCart() {
       e.target.closest(".cart-detail.delete-article").remove();
       displayTotal();
     })
+    if (localStorage.getItem("products")) {
+      emptyCart.style.display = "none";
+    }
   }
 }
 
@@ -76,49 +80,53 @@ function postRequest() {
   let inputAdress = document.querySelector("#adress");
   let inputMail = document.querySelector("#email");
 
- 
-            
-  
-  
   submit.addEventListener("click", (event) => {
     event.preventDefault();
+    if (
+      !inputName.value ||
+      !inputLastName.value ||
+      !inputCity.value ||
+      !inputAdress.value ||
+      !inputMail.value 
+    ) {
+      alert("Veuillez renseigner tous les champs");
+      e.preventDefault();
+    } else {
 
-    const contact = {
-      firstName: inputName.value,
-      lastName: inputLastName.value,
-      address: inputAdress.value,
-      city: inputCity.value,
-      email: inputMail.value
-    };
-    console.log(contact);
+        const contact = {
+          firstName: inputName.value,
+          lastName: inputLastName.value,
+          address: inputAdress.value,
+          city: inputCity.value,
+          email: inputMail.value
+        };
+        console.log(contact);
 
-
-    
-    const productsId = products.map(el => el._id)
-    /*let productsId = [];
-    for(let product of products){
-      productsId.push(product._id);
-    }*/
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        contact: contact,
-        products: productsId,
-      }),
-      headers: {"Content-Type": "application/json"},
-      };
-      console.log(options);
-    fetch(`http://localhost:3000/api/teddies/order`, options)
-    .then((response) => {
-      console.log(response);
-    return response.json()})
-    .then((data) => {
-      console.log(data);
-      localStorage.clear();
-      localStorage.setItem("orderId", data.orderId);
-      document.location.href = "./confirmation.html";
-
-    })
+        const productsId = products.map(el => el._id)
+        /*let productsId = [];
+        for(let product of products){
+          productsId.push(product._id);
+        }*/
+        const options = {
+          method: "POST",
+          body: JSON.stringify({
+            contact: contact,
+            products: productsId,
+          }),
+          headers: {"Content-Type": "application/json"},
+          };
+          console.log(options);
+        fetch(`http://localhost:3000/api/teddies/order`, options)
+        .then((response) => {
+          console.log(response);
+        return response.json()})
+        .then((data) => {
+          console.log(data);
+          localStorage.clear();
+          localStorage.setItem("orderId", data.orderId);
+          document.location.href = "confirmation.html";
+      })
     .catch(error => console.log(error));
-  });  
+  }});  
+
 }

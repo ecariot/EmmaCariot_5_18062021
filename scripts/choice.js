@@ -1,7 +1,7 @@
 
 const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
-const container = document.querySelector(".container");
+const container = document.querySelector(".container-of-teddy");
 
 const productCaseImage = document.querySelector(".img");
 const productCaseName = document.querySelector(".product-case-infos-title");
@@ -39,7 +39,7 @@ function getArticle() {
       }
     })
     .catch((error) => {
-      let container = document.querySelector(".container");
+      let container = document.querySelector(".container-of-teddy");
       container.innerHTML =
         "Erreur, êtes-vous sur le port 3000?";
     })
