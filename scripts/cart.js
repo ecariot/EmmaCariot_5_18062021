@@ -67,11 +67,18 @@ function clearCart() {
     buttonToEmptyCart.addEventListener("click", () => {
       localStorage.clear();
     });
+    if (localStorage.getItem("products") === null) {
+      buttonToEmptyCart.style.display = "none";
+    }
   }
  
 
 function postRequest() {
 
+  const form = document.querySelector(".form");
+  if (localStorage.getItem("products") === null) {
+    form.style.display = "none";
+  }
   // On récupère les inputs depuis le DOM.
   const submit = document.querySelector("#order");
   let inputName = document.querySelector("#name");
