@@ -1,11 +1,16 @@
 const cart = document.querySelector(".cart-global");
 let products = JSON.parse(localStorage.getItem("products")) ?? [];
+const submit = document.querySelector("#order");
 
 document.addEventListener("DOMContentLoaded", () => {
   displayCart();
   displayTotal();
   clearCart();
   postRequest();
+
+  const inputs = [...document.querySelectorAll(".form input")];
+
+  listenInputs(inputs); 
 })
  
 
@@ -37,7 +42,6 @@ function displayCart() {
 
     let productTrash = document.createElement("button");
     productRow.appendChild(productTrash);
-    console.log(productTrash);
     productRow.classList.add("delete-article");
     productTrash.innerHTML = "supprimer";
 
@@ -55,7 +59,6 @@ function displayCart() {
 
 function displayTotal() {
   let sum = 0;
-  console.log(products);
     for(let n = 0; n < products.length; n++){
         sum += products[n].quantity * products[n].price;
     }
@@ -79,12 +82,13 @@ function postRequest() {
   if (localStorage.getItem("products") === null) {
     form.style.display = "none";
   }
+
   // On récupère les inputs depuis le DOM.
-  const submit = document.querySelector("#order");
+  
   let inputName = document.querySelector("#name");
-  let inputLastName = document.querySelector("#last-name");
+  let inputLastName = document.querySelector("#lastName");
   let inputCity = document.querySelector("#city");
-  let inputAdress = document.querySelector("#adress");
+  let inputAddress = document.querySelector("#address");
   let inputMail = document.querySelector("#email");
 
   submit.addEventListener("click", (event) => {
@@ -93,7 +97,7 @@ function postRequest() {
       !inputName.value ||
       !inputLastName.value ||
       !inputCity.value ||
-      !inputAdress.value ||
+      !inputAddress.value ||
       !inputMail.value 
     ) {
       alert("Veuillez renseigner tous les champs");
@@ -103,11 +107,10 @@ function postRequest() {
         const contact = {
           firstName: inputName.value,
           lastName: inputLastName.value,
-          address: inputAdress.value,
+          address: inputAddress.value,
           city: inputCity.value,
           email: inputMail.value
         };
-        console.log(contact);
 
         const productsId = products.map(el => el._id)
         /*let productsId = [];
@@ -122,18 +125,59 @@ function postRequest() {
           }),
           headers: {"Content-Type": "application/json"},
           };
-          console.log(options);
         fetch(`http://localhost:3000/api/teddies/order`, options)
         .then((response) => {
-          console.log(response);
         return response.json()})
         .then((data) => {
-          console.log(data);
           localStorage.clear();
           localStorage.setItem("orderId", data.orderId);
           document.location.href = "confirmation.html";
       })
-    .catch(error => console.log(error));
+    .catch(error => (error));
   }});  
 
+}
+
+function listenInputs(inputs) {
+  for(let input of inputs){
+    input.addEventListener('change', () => {
+      validInput(input);
+    })
+  }
+}
+
+function validInput(input) {
+  switch(input.name){
+    case "name":
+    case "lastName":
+    case "city":
+      const alphaRegExp = new RegExp(
+        '^[a-zA-Z]{2,30}$', 'g'
+      );
+      displaySmall(input, alphaRegExp);
+      break;
+    case "email":
+      const emailRegExp = new RegExp(
+        '^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
+      );
+      displaySmall(input, emailRegExp);
+      break;
+    case "address":
+      const addressRegExp = new RegExp(
+        '^[a-zA-Z0-9 ]{2,40}$', 'g'
+      );
+      displaySmall(input, addressRegExp);
+      break;
+  }
+}
+
+function displaySmall(input, regExp) {
+  const small = input.closest("div").querySelector("small");
+  if(regExp.test(input.value)){
+    small.innerHTML = "Champ Valide";
+    submit.style.display = "block";
+  } else {
+    small.innerHTML = "Champ non valide";
+    submit.style.display = "none";
+  }
 }

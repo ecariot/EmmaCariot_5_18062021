@@ -43,7 +43,6 @@ function getArticles(){
          return res.json();
       })
       .catch((error) => {
-        console.error(error);
         let teddyContainer = document.querySelector(".teddy-container");
         teddyContainer.innerHTML = "Impossible d'afficher les nounours. Etes-vous sur le port 3000?";
       })
